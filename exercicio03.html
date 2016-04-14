@@ -1,0 +1,37 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Exercicio - 3</title>
+
+<style type="text/css">
+.formulario{position: absolute; left: 50%; right: 50%; width: 1000px;margin-top: 50px; margin-left: -200px;}
+.titulo{width:1000px;}
+.titulo p{text-align: center;}
+</style>
+</head>
+<body>
+
+<div class="titulo">
+<p>Entrar com nome, sexo e idade de uma
+pessoa. Se a pessoa for do sexo feminino e
+tiver menos que 25 anos, imprimir nome e a
+a mensagem: ACEITA. Caso contrário,
+imprimir nome e a mensagem: NÃO ACEITA.</p></div>
+
+<div class="formulario">
+<form action="action-exercicio03.php" method="get">
+ <p>Digite seu nome:</p>
+ <p><input type="text" name="nome" /></p>
+ <p>Digite sua idade: </p>
+ <p><input type="text" name="idade" /></p>
+ <p>Selecione sexo:</p>
+ <p><input type="radio" name="sexmasc" value="masculino" checked>Masculino</p>
+ <p><input type="radio" name="sexfem" value="female">Feminino</p>
+ <p><input type="submit" value="Ver resultado"/></p>
+
+</form>
+
+</div>
+</body>
+</html>
+

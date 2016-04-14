@@ -1,0 +1,67 @@
+<?php
+	require_once ('classes/bd.classe.php');
+	require ('classes/query.class.php');
+	bd::conn();
+	$usuario = new query();
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Cadastro de clientes</title>
+</head>
+
+<body>
+<div id="formulario">
+	<?php
+		if (isset($_POST['acao']) && $_POST['acao'] == 'cadastrar'){
+			$nome = strip_tags(filter_input(INPUT_POST, 'nome'));
+			$email = strip_tags(filter_input(INPUT_POST, 'email'));
+			$site = strip_tags(filter_input(INPUT_POST, 'site'));
+			$senha = strip_tags(filter_input(INPUT_POST, 'senha'));
+			$descricao = strip_tags(filter_input(INPUT_POST, 'descricao'));
+
+			$dados = array($nome, $email, $site, $senha, $descricao, 0);
+
+			if ($nome == '' || $email == '' || $site == '' || $senha == '' || $descricao == ''){
+				echo '<script>alert("Informe todos os dados");</script>';
+			}else{
+				if ($usuario->cadastraruser($dados)){
+					echo '<script>alert("Usuário cadastrado com sucesso");</script>';
+				}else{
+					echo '<script>alert("Erro ao cadastrar o usuário ou ele já existe");</script>';
+				}
+			}
+		}
+	?>
+
+<form action="" method="post" name="cadastro_clientes" enctype="multpart/form-data">
+<input type="file" name="imagem" value="Escolher Arquivo" />
+<br /><br />
+<label>Nome:</label><br />
+<input name="nome" type="text" /><br />
+
+<label>Email:</label><br />
+<input name="email" type="text" /><br />
+
+<label>Site (opcional):</label>
+<br />
+<input name="site" type="text" /><br />
+
+<label>Senha:</label><br />
+<input name="senha" type="password" />
+<br />
+
+<label>Descrição:</label>
+<br />
+<label for="descricao"></label>
+<textarea name="descricao" id="descricao" cols="45" rows="5" ></textarea>
+<br /><br />
+
+<input name="acao" type="hidden" value="cadastrar" />
+<input name="enviar" type="submit" value="Cadastrar" />
+</form>
+</div>
+
+</body>
+</html>
