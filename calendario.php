@@ -6,6 +6,8 @@
 <body>
 <h1>Este é o mês : <?php echo date('F'); ?></h1>
 <h2>Esta é a semana <?php echo date('W'); ?> do ano de <?php echo date('Y'); ?> </h2>
+
+<p>Teste de calendario</p>
 <table border="1">
 	<tr>
 
